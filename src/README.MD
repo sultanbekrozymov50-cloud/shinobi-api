@@ -1,0 +1,1 @@
+Проект реализован с использованием Spring Boot 3.2.2. Реализованы паттерны: Factory Method для создания типов ниндзя, Data Mapper через JdbcTemplate и Layered Architecture. База данных: PostgreSQL.
