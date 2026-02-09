@@ -24,7 +24,6 @@ public class ShinobiRepository {
     }
 
     public Shinobi findById(int id) {
-        // queryForStream поможет избежать ошибок если ничего не найдено
         return jdbcTemplate.queryForStream("SELECT * FROM shinobi WHERE id = ?", shinobiMapper, id)
                 .findFirst().orElse(null);
     }
@@ -33,14 +32,12 @@ public class ShinobiRepository {
         jdbcTemplate.update("DELETE FROM shinobi WHERE id = ?", id);
     }
 
-    // RowMapper превращает строки из БД в объекты Java
     private final RowMapper<Shinobi> shinobiMapper = (rs, rowNum) -> {
         String type = rs.getString("dtype");
         int id = rs.getInt("id");
         String name = rs.getString("name");
         int chakra = rs.getInt("chakra_level");
 
-        // Важно: проверка должна быть точной!
         if ("MedicNinja".equalsIgnoreCase(type)) {
             return new MedicNinja(id, name, chakra);
         }

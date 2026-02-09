@@ -5,7 +5,6 @@ public class ShinobiRequest {
     private int chakra;
     private String type; // "warrior" или "medic"
 
-    // Геттеры и сеттеры (можно сгенерировать Alt+Insert)
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
     public int getChakra() { return chakra; }
